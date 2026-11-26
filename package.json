@@ -5,7 +5,7 @@
   "description": "ABADI - platform persiapan masa depan siswa SMK/SMA (kuliah, sekolah kedinasan, abdi negara, CPNS)",
   "type": "module",
   "scripts": {
-    "start": "npx --yes serve www -l 4173",
+    "start": "npx --yes serve docs -l 4173",
     "test": "node scratch/smoke.mjs",
     "cap:sync": "cap sync android",
     "cap:open": "cap open android",
