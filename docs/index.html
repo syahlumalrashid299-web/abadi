@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0">
+<title>ABADI: Platform Persiapan Masa Depan Siswa SMK/SMA</title>
+<meta name="description" content="ABADI membantu siswa SMK/SMA memilih jalur setelah lulus: kuliah, sekolah kedinasan, abdi negara, atau CPNS. Lengkap dengan info kampus, jurusan, bank soal, lowongan, dan penyimpanan berkas.">
+<meta name="theme-color" content="#0f766e">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/views.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar" aria-label="Navigasi utama"></aside>
+
+  <div class="main-area">
+    <header class="topbar">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9 12 4 2 9l10 5 10-5Z"/><path d="M6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/></svg>
+      </div>
+      <span class="topbar-title">ABADI</span>
+      <span class="spacer"></span>
+      <button class="icon-btn" id="btn-topbar-more" aria-label="Menu lengkap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </header>
+
+    <main class="content" id="view-root" role="main" tabindex="-1"></main>
+  </div>
+</div>
+
+<nav class="bottom-nav" id="bottom-nav" aria-label="Navigasi bawah"></nav>
+<div class="toast-wrap" id="toast-wrap" aria-live="polite"></div>
+<div id="modal-root"></div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
