@@ -22,7 +22,7 @@ Semua fitur saling terhubung: hasil rekomendasi menuju halaman kampus/lowongan, 
 ## Struktur
 
 ```
-www/                    aplikasi (tanpa build step, ES modules)
+docs/                   aplikasi (tanpa build step, ES modules)
   index.html
   manifest.json
   css/  styles.css, views.css, fonts.css
@@ -35,12 +35,12 @@ capacitor.config.json   konfigurasi pembungkus Android
 .github/workflows/      build APK otomatis
 ```
 
-Font Plus Jakarta Sans di-host sendiri di `www/assets/fonts/`, jadi aplikasi tampil benar tanpa internet.
+Font Plus Jakarta Sans di-host sendiri di `docs/assets/fonts/`, jadi aplikasi tampil benar tanpa internet.
 
 ## Jalankan lokal
 
 ```bash
-npx serve www -l 4173
+npx serve docs -l 4173
 ```
 
 Buka `http://localhost:4173`. Harus lewat server, bukan klik `index.html` langsung, karena memakai ES modules.
@@ -73,5 +73,5 @@ APK ini bertanda *debug* (cocok untuk uji coba dan distribusi internal). Untuk P
 
 - Tanpa dependensi runtime di sisi web: hanya `@capacitor/*` untuk membungkus Android.
 - Batas ukuran berkas per item 1,4 MB karena kuota `localStorage` sekitar 5 MB per origin.
-- Batas tersebut dan semua data lain bisa diubah di `www/js/store.js`.
+- Batas tersebut dan semua data lain bisa diubah di `docs/js/store.js`.
 - Desain responsif: sidebar tetap di layar lebar, bottom navigation di layar sempit (<= 860 px).
