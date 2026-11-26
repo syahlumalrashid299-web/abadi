@@ -1,0 +1,11 @@
+node_modules/
+scratch/
+ref.html
+dist/
+android/
+.gradle/
+build/
+*.log
+.DS_Store
+Thumbs.db
+.env
