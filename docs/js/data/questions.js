@@ -102,8 +102,8 @@ export const BANK_SOAL = {
     ]
   },
   skd: {
-    nama: 'Latihan SKD (CPNS & Kedinasan)',
-    deskripsi: 'Tes Wawasan Kebangsaan, Intelegensia Umum, dan Karakteristik Pribadi.',
+    nama: 'SKD: TWK, TIU, TKP (CAT)',
+    deskripsi: 'Latihan Computer Assisted Test: TWK, TIU, dan TKP. Filter subtes untuk fokus satu bagian dulu.',
     soal: [
       {
         id: 'skd-1', topik: 'TWK',
@@ -192,6 +192,251 @@ export const BANK_SOAL = {
         opsi: ['55', '58', '60', '62', '65'],
         jawaban: 2,
         pembahasan: '15% x 200 = 30. 20% x 150 = 30. Total 60.'
+      },
+      {
+        id: 'skd-11', topik: 'TWK',
+        soal: 'Sikap yang paling mencerminkan pengamalan sila keempat Pancasila di lingkungan sekolah adalah...',
+        opsi: [
+          'Mengikuti pemilihan ketua kelas dengan musyawarah dan menghormati hasilnya',
+          'Menolak semua keputusan yang tidak sesuai keinginan pribadi',
+          'Membiarkan teman berdebat tanpa mencoba menengahi',
+          'Memaksa teman satu kelompok menyetujui pendapat sendiri',
+          'Menghindari kegiatan kelas agar tidak terlibat perbedaan pendapat'
+        ],
+        jawaban: 0,
+        pembahasan: 'Sila keempat menekankan musyawarah mufakat dan menghormati keputusan bersama. Pilihan lain justru memaksakan kehendak atau menghindari musyawarah.'
+      },
+      {
+        id: 'skd-12', topik: 'TWK',
+        soal: 'Pasal 1 ayat (1) UUD 1945 menyatakan bahwa Negara Indonesia adalah negara...',
+        opsi: ['serikat', 'kesatuan yang berbentuk republik', 'federal', 'monarki konstitusional', 'persemakmuran'],
+        jawaban: 1,
+        pembahasan: 'Pasal 1 ayat (1) UUD NRI 1945 berbunyi: "Negara Indonesia adalah negara kesatuan yang berbentuk republik."'
+      },
+      {
+        id: 'skd-13', topik: 'TWK',
+        soal: 'Bahasa negara diatur dalam UUD 1945 dan ditetapkan sebagai bahasa resmi kenegaraan, yaitu...',
+        opsi: ['Bahasa Jawa', 'Bahasa Melayu', 'Bahasa Indonesia', 'Bahasa Sansakerta', 'Bahasa Belanda'],
+        jawaban: 2,
+        pembahasan: 'Pasal 36 UUD 1945 menetapkan Bahasa Indonesia sebagai bahasa negara. Bahasa daerah tetap dihormati sebagai bagian kebudayaan.'
+      },
+      {
+        id: 'skd-14', topik: 'TWK',
+        soal: 'Lembaga negara yang berwenang mengubah dan menetapkan Undang-Undang Dasar adalah...',
+        opsi: ['Presiden', 'DPR', 'MPR', 'Mahkamah Konstitusi', 'DPD'],
+        jawaban: 2,
+        pembahasan: 'Pasal 3 ayat (1) UUD 1945 menyebut MPR berwenang mengubah dan menetapkan Undang-Undang Dasar.'
+      },
+      {
+        id: 'skd-15', topik: 'TWK',
+        soal: 'Hak dan kewajiban warga negara untuk ikut serta dalam upaya pembelaan negara diatur dalam UUD 1945...',
+        opsi: ['Pasal 27 ayat (3)', 'Pasal 28 ayat (1)', 'Pasal 31 ayat (1)', 'Pasal 33 ayat (1)', 'Pasal 34 ayat (1)'],
+        jawaban: 0,
+        pembahasan: 'Pasal 27 ayat (3) UUD 1945: "Setiap warga negara berhak dan wajib ikut serta dalam upaya pembelaan negara." Pasal 30 mengatur pertahanan keamanan negara.'
+      },
+      {
+        id: 'skd-16', topik: 'TWK',
+        soal: 'Tujuan negara Indonesia yang tercantum dalam Pembukaan UUD 1945 alinea keempat antara lain...',
+        opsi: [
+          'Menguasai perdagangan negara lain',
+          'Melindungi segenap bangsa dan seluruh tumpah darah Indonesia',
+          'Membentuk negara serikat di Asia Tenggara',
+          'Menjadikan Indonesia negara industri militer',
+          'Menyatukan seluruh negara Asia di bawah satu pemerintahan'
+        ],
+        jawaban: 1,
+        pembahasan: 'Alinea keempat menyebut empat tujuan: melindungi segenap bangsa, memajukan kesejahteraan umum, mencerdaskan kehidupan bangsa, serta ikut melaksanakan ketertiban dunia.'
+      },
+      {
+        id: 'skd-17', topik: 'TWK',
+        soal: 'Seorang pegawai negeri menerima hadiah dari pihak yang berkepentingan dengan pekerjaannya. Sikap yang menunjukkan integritas adalah...',
+        opsi: [
+          'Menerima karena tidak diminta secara langsung',
+          'Menerima lalu membagikannya kepada rekan kerja',
+          'Menolak dan melaporkannya melalui saluran pengaduan resmi',
+          'Menerima tetapi menyembunyikannya dari atasan',
+          'Menunda keputusan sampai ada pegawai lain yang menerima'
+        ],
+        jawaban: 2,
+        pembahasan: 'Gratifikasi wajib ditolak dan dilaporkan ke KPK atau unit pengendalian gratifikasi instansi sesuai UU No. 20 Tahun 2001. Menerima atau menyembunyikan berarti melanggar integritas.'
+      },
+      {
+        id: 'skd-18', topik: 'TWK',
+        soal: 'Wawasan nusantara memandang wilayah Indonesia sebagai satu kesatuan...',
+        opsi: [
+          'politik, ekonomi, sosial budaya, serta pertahanan dan keamanan',
+          'hanya wilayah laut dan udara',
+          'pemerintahan pusat tanpa peran daerah',
+          'budaya tanpa mempertimbangkan keberagaman',
+          'ekonomi bebas tanpa batas negara'
+        ],
+        jawaban: 0,
+        pembahasan: 'Wawasan nusantara mencakup kesatuan politik, ekonomi, sosial budaya, serta pertahanan dan keamanan sebagai satu kesatuan wilayah nasional.'
+      },
+      {
+        id: 'skd-19', topik: 'TIU',
+        soal: 'Lanjutkan pola berikut: 3, 6, 11, 18, 27, ...',
+        opsi: ['34', '36', '38', '40', '42'],
+        jawaban: 2,
+        pembahasan: 'Selisih bertambah 2 tiap langkah: +3, +5, +7, +9, jadi berikutnya +11. Maka 27 + 11 = 38.'
+      },
+      {
+        id: 'skd-20', topik: 'TIU',
+        soal: 'Jika x = 3, nilai dari 2x² - 5x + 1 adalah...',
+        opsi: ['2', '3', '4', '5', '6'],
+        jawaban: 2,
+        pembahasan: '2(3)² - 5(3) + 1 = 2(9) - 15 + 1 = 18 - 15 + 1 = 4.'
+      },
+      {
+        id: 'skd-21', topik: 'TIU',
+        soal: 'Perbandingan uang Ani dan Budi adalah 3 : 5. Jika selisih uang mereka Rp 20.000, jumlah uang keduanya adalah...',
+        opsi: ['Rp 60.000', 'Rp 70.000', 'Rp 80.000', 'Rp 90.000', 'Rp 100.000'],
+        jawaban: 2,
+        pembahasan: 'Selisih perbandingan 5 - 3 = 2 bagian = Rp 20.000, jadi 1 bagian = Rp 10.000. Jumlah 8 bagian = Rp 80.000.'
+      },
+      {
+        id: 'skd-22', topik: 'TIU',
+        soal: 'Semua pelamar wajib mengikuti SKD. Tidak ada peserta yang lulus SKD tanpa berlatih soal. Kesimpulan yang tepat...',
+        opsi: [
+          'Semua pelamar pasti lulus SKD',
+          'Semua yang lulus SKD pernah berlatih soal',
+          'Tidak ada pelamar yang berlatih soal',
+          'Semua yang berlatih soal pasti lulus SKD',
+          'Pelamar yang tidak ikut SKD tetap lulus'
+        ],
+        jawaban: 1,
+        pembahasan: 'Pernyataan "tidak ada yang lulus tanpa berlatih" setara dengan lulus berarti berlatih. Arah sebaliknya (berlatih berarti pasti lulus) tidak dijamin.'
+      },
+      {
+        id: 'skd-23', topik: 'TIU',
+        soal: 'Dua kendaraan berangkat bersamaan dari titik yang sama menuju arah berlawanan dengan kecepatan 60 km/jam dan 80 km/jam. Jarak keduanya setelah 2 jam adalah...',
+        opsi: ['240 km', '260 km', '280 km', '300 km', '320 km'],
+        jawaban: 2,
+        pembahasan: 'Karena berlawanan arah, kecepatan relatif dijumlahkan: 60 + 80 = 140 km/jam. Jarak = 140 x 2 = 280 km.'
+      },
+      {
+        id: 'skd-24', topik: 'TIU',
+        soal: 'Dua dadu dilempar bersamaan. Peluang munculnya jumlah mata dadu 7 adalah...',
+        opsi: ['1/12', '1/9', '1/6', '5/36', '1/4'],
+        jawaban: 2,
+        pembahasan: 'Pasangan berjumlah 7: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1) = 6 dari 36 kemungkinan, jadi 6/36 = 1/6.'
+      },
+      {
+        id: 'skd-25', topik: 'TKP',
+        soal: 'Seorang warga menyampaikan keluhan karena prosedur layanan dianggap terlalu rumit. Sikap Anda...',
+        opsi: [
+          'Menyampaikan bahwa prosedur sudah ditetapkan dan tidak bisa diubah',
+          'Mendengarkan keluhan, menjelaskan alurnya, dan membantu melengkapi berkas sesuai aturan',
+          'Meminta warga menunggu sampai ada pegawai lain yang menangani',
+          'Mengarahkan warga ke instansi lain agar tidak menambah beban kerja',
+          'Mencatat keluhan lalu menyimpannya tanpa tindak lanjut'
+        ],
+        jawaban: 1,
+        pembahasan: 'Orientasi pelayanan publik menuntut sikap responsif: mendengarkan, menjelaskan, dan membantu penyelesaian tanpa melanggar aturan.'
+      },
+      {
+        id: 'skd-26', topik: 'TKP',
+        soal: 'Anda baru dipindahkan ke unit kerja yang seluruh anggotanya sudah lama bekerja bersama. Sikap Anda...',
+        opsi: [
+          'Menunggu rekan lain mendekati lebih dulu',
+          'Bekerja sendiri agar tidak mengganggu kelompok yang sudah solid',
+          'Berkenalan aktif, mempelajari alur kerja, dan meminta arahan bila perlu',
+          'Mengikuti cara kerja lama Anda tanpa menyesuaikan',
+          'Mengeluh kepada atasan karena sulit masuk ke kelompok baru'
+        ],
+        jawaban: 2,
+        pembahasan: 'Kemampuan membangun jejaring kerja ditunjukkan dengan inisiatif berkenalan dan mempelajari alur kerja baru, bukan menunggu atau menyendiri.'
+      },
+      {
+        id: 'skd-27', topik: 'TKP',
+        soal: 'Rekan kerja Anda berasal dari daerah dengan kebiasaan komunikasi yang berbeda dan sering dianggap kurang sopan oleh tim. Sikap Anda...',
+        opsi: [
+          'Menghindari berkomunikasi dengan rekan tersebut',
+          'Mengikuti penilaian tim bahwa rekan itu tidak sopan',
+          'Memahami latar budayanya dan menyampaikan norma komunikasi tim secara baik',
+          'Melaporkan rekan tersebut ke atasan tanpa membicarakannya dulu',
+          'Meminta rekan tersebut dipindahkan ke unit lain'
+        ],
+        jawaban: 2,
+        pembahasan: 'Sensitivitas sosial budaya berarti memahami perbedaan latar belakang lalu menjembatani dengan komunikasi yang jelas, bukan menghakimi atau menghindar.'
+      },
+      {
+        id: 'skd-28', topik: 'TKP',
+        soal: 'Instansi Anda menerapkan aplikasi kerja baru yang belum Anda kuasai, sementara pekerjaan harus tetap selesai. Sikap Anda...',
+        opsi: [
+          'Tetap memakai cara lama sampai ada pelatihan resmi',
+          'Meminta rekan mengerjakan bagian yang memakai aplikasi baru',
+          'Mempelajari panduan, mencoba sendiri, dan bertanya pada rekan yang lebih paham',
+          'Menunggu sampai atasan memerintahkan secara tertulis',
+          'Menyampaikan bahwa aplikasi baru menghambat pekerjaan'
+        ],
+        jawaban: 2,
+        pembahasan: 'Adaptasi teknologi informasi terbaik adalah belajar mandiri lewat panduan sambil memanfaatkan pengetahuan rekan, sehingga pekerjaan tetap berjalan.'
+      },
+      {
+        id: 'skd-29', topik: 'TKP',
+        soal: 'Anda menyadari laporan yang sudah dikirim ke pimpinan memuat data yang salah. Sikap Anda...',
+        opsi: [
+          'Diam saja karena laporan sudah diterima',
+          'Menunggu sampai ada yang menanyakan kesalahan tersebut',
+          'Menyalahkan rekan yang memberi data',
+          'Segera melapor dan mengirimkan perbaikan disertai penjelasan',
+          'Memperbaiki data tanpa memberi tahu siapa pun'
+        ],
+        jawaban: 3,
+        pembahasan: 'Profesionalisme dan integritas menuntut keterbukaan: segera melapor dan memperbaiki, bukan menyembunyikan atau melempar kesalahan.'
+      },
+      {
+        id: 'skd-30', topik: 'TKP',
+        soal: 'Anda menerima pesan grup yang mengajak menolak ideologi negara dan menggantinya dengan paham lain. Sikap Anda...',
+        opsi: [
+          'Membiarkan karena bukan urusan Anda',
+          'Meneruskan pesan ke grup lain untuk mencari pendapat',
+          'Menolak dengan sopan, keluar dari grup, dan melaporkan ke pihak berwenang',
+          'Membalas dengan makian agar anggota grup lain takut',
+          'Mengikuti diskusi untuk mengetahui isi paham tersebut lebih jauh'
+        ],
+        jawaban: 2,
+        pembahasan: 'Sikap antiradikalisme: menolak ajakan secara tegas namun sopan, tidak menyebarluaskan, dan melaporkan ke aparat berwenang.'
+      },
+      {
+        id: 'skd-31', topik: 'TKP',
+        soal: 'Atasan meminta Anda memprioritaskan berkas milik kerabatnya sehingga melewati antrean. Sikap Anda...',
+        opsi: [
+          'Memenuhi permintaan karena atasan berwenang',
+          'Menolak dengan sopan dan menjelaskan prosedur antrean yang berlaku',
+          'Memproses tetapi meminta imbalan sebagai kompensasi',
+          'Memproses diam-diam tanpa mencatat dalam sistem',
+          'Menyampaikan ke rekan lain agar mereka yang memutuskan'
+        ],
+        jawaban: 1,
+        pembahasan: 'Profesionalisme berarti menegakkan prosedur tanpa memandang kedekatan hubungan, disampaikan dengan cara sopan dan berbasis aturan.'
+      },
+      {
+        id: 'skd-32', topik: 'TKP',
+        soal: 'Target kerja bulan ini belum tercapai padahal waktu tersisa satu minggu. Sikap Anda...',
+        opsi: [
+          'Menunggu instruksi atasan sebelum bertindak',
+          'Mengubah laporan agar target terlihat tercapai',
+          'Mengevaluasi hambatan, menyusun rencana percepatan, dan berkoordinasi dengan tim',
+          'Meminta perpanjangan tenggat tanpa rencana perbaikan',
+          'Menyalahkan kondisi di luar kendali Anda'
+        ],
+        jawaban: 2,
+        pembahasan: 'Orientasi hasil ditunjukkan dengan evaluasi hambatan dan penyusunan langkah percepatan yang konkret, bukan memanipulasi data atau menunggu.'
+      },
+      {
+        id: 'skd-33', topik: 'TKP',
+        soal: 'Kebijakan kerja di kantor berubah menjadi kombinasi kerja di kantor dan di rumah secara bergilir. Sikap Anda...',
+        opsi: [
+          'Menolak karena merasa cara kerja lama lebih nyaman',
+          'Bekerja di rumah dengan santai karena tidak diawasi langsung',
+          'Menyesuaikan jadwal, menjaga komunikasi tim, dan memastikan pekerjaan tetap selesai',
+          'Meminta pengecualian agar selalu bekerja di kantor',
+          'Menunggu rekan lain lebih dulu menyesuaikan diri'
+        ],
+        jawaban: 2,
+        pembahasan: 'Kemampuan adaptasi ditunjukkan dengan menyesuaikan cara kerja baru sambil menjaga koordinasi dan hasil kerja tetap terjaga.'
       }
     ]
   }
