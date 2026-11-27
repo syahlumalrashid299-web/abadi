@@ -47,18 +47,26 @@ Buka `http://localhost:4173`. Harus lewat server, bukan klik `index.html` langsu
 
 ## Build APK
 
-APK dibangun otomatis di GitHub Actions (runner Ubuntu + Android SDK), bukan di komputer lokal.
+Ada dua cara. Yang sudah terbukti berhasil: build lokal dengan Gradle.
 
-1. Push ke branch `main` atau jalankan workflow manual dari tab **Actions**.
-2. Tunggu sekitar 4 sampai 8 menit.
-3. Di halaman run, unduh artifact **ABADI-apk**, atau buat tag untuk mendapat file rilis langsung:
+### 1. Build lokal (sudah terbukti)
 
-```bash
-git tag v1.0.0
-git push origin v1.0.0
+```powershell
+# Sekali saja
+powershell -ExecutionPolicy Bypass -File scratch\setup-android.ps1
+
+# Setiap kali ingin build
+powershell -ExecutionPolicy Bypass -File scratch\build-apk.ps1
 ```
 
-Tag `v*` memicu job yang mengunggah APK ke **Releases**, dan tautan itu bisa diunduh tanpa login GitHub.
+Hasil: `android\app\build\outputs\apk\debug\app-debug.apk` (sekitar 4 MB).
+Salin ke `dist\ABADI-v1.0.0.apk` untuk dibagikan.
+
+Butuh JDK 17 dan Android SDK 34. Keduanya sudah tersedia di `tools\` dan `android-sdk\`.
+
+### 2. Otomatis via GitHub Actions (opsional)
+
+Workflow sudah disiapkan di `.github\workflows\build-apk.yml`, tetapi **belum bisa diunggah** dengan token saat ini karena token tidak punya scope `workflow`. Buat token baru dengan scope `repo` + `workflow`, lalu push file itu sekali. Setelah itu setiap push ke `main` akan menghasilkan artifact APK, dan tag `v*` akan membuat Release berisi APK.
 
 ### Install di HP
 
