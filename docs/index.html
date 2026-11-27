@@ -39,7 +39,8 @@
 
 <script type="module" src="js/app.js"></script>
 <script>
-  if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
+  var isNative = !!(window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform());
+  if (!isNative && 'serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').catch(function () {});
     });
