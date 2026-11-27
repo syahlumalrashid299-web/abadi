@@ -4,16 +4,29 @@ import { BANK_SOAL } from '../data/questions.js';
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E'];
 
+// Subtes SKD untuk filter di dalam paket skd.
+const SUBTES = ['Semua', 'TWK', 'TIU', 'TKP'];
+
 function emptyProgress() {
   return { snbt: [], skd: [] };
 }
 
+// Gabungkan progres lama dengan kunci paket yang ada sekarang,
+// supaya tidak ada riwayat yang hilang saat paket soal bertambah.
+function padProgress(raw) {
+  const base = emptyProgress();
+  const src = raw && typeof raw === 'object' ? raw : {};
+  Object.keys(BANK_SOAL).forEach(k => { base[k] = Array.isArray(src[k]) ? src[k] : []; });
+  Object.keys(src).forEach(k => { if (Array.isArray(src[k]) && !Array.isArray(base[k])) base[k] = src[k]; });
+  return base;
+}
+
 export function renderSeleksi(ctx) {
   let paket = 'snbt';
+  let subtes = 'Semua';
   let index = 0;
   let picked = null; // index opsi yang dipilih untuk soal aktif
-  let answered = store.get('bankSoal', emptyProgress());
-  if (!answered || !Array.isArray(answered.snbt) || !Array.isArray(answered.skd)) answered = emptyProgress();
+  let answered = padProgress(store.get('bankSoal', null));
 
   const wrap = document.createElement('div');
   wrap.innerHTML = `
@@ -46,12 +59,13 @@ export function renderSeleksi(ctx) {
           <button class="btn btn-ghost btn-sm" id="reset-bank">${icon('refresh')} Ulangi dari awal</button>
         </div>
       </div>
+      <div class="chips" id="subtest-chips" style="margin-top:12px;display:none"></div>
     </div>
 
     <div class="question-card" id="quiz-area"></div>
 
     <div class="note teal" style="margin-top:16px">
-      <strong>Catatan:</strong> soal di sini adalah latihan mandiri, bukan soal resmi. Untuk UTBK-SNBT dan SKD, jumlah soal dan waktu sebenarnya jauh lebih panjang.
+      <strong>Soal SKD memakai sistem CAT.</strong> Ujian resmi SKD CPNS dan sekolah kedinasan diselenggarakan dengan <em>Computer Assisted Test</em> BKN: 110 butir soal (TWK 30, TIU 35, TKP 45) dalam 100 menit. Nilai ambang batas mengikuti keputusan resmi KemenPAN-RB, jadi pakai latihan ini sebagai pemanasan, lalu kerjakan simulasi CAT resmi.
     </div>
   `;
 
@@ -93,15 +107,32 @@ export function renderSeleksi(ctx) {
 
   /* ---------- Chips paket ---------- */
   const chips = wrap.querySelector('#paket-chips');
+  const subChips = wrap.querySelector('#subtest-chips');
+
   function paintChips() {
     chips.innerHTML = Object.keys(BANK_SOAL).map(k => `
       <button class="chip ${k === paket ? 'active' : ''}" data-p="${k}">${esc(BANK_SOAL[k].nama)}</button>`).join('');
     chips.querySelectorAll('[data-p]').forEach(b => b.addEventListener('click', () => setPaket(b.dataset.p)));
+
+    subChips.style.display = paket === 'skd' ? 'flex' : 'none';
+    subChips.innerHTML = SUBTES.map(s => `
+      <button class="chip ${s === subtes ? 'active' : ''}" data-s="${s}">${s === 'Semua' ? 'Semua subtes' : s}</button>`).join('');
+    subChips.querySelectorAll('[data-s]').forEach(b => b.addEventListener('click', () => setSubtes(b.dataset.s)));
   }
 
   function setPaket(k) {
     if (!BANK_SOAL[k]) return;
     paket = k;
+    subtes = 'Semua';
+    index = 0;
+    picked = null;
+    paintChips();
+    paintQuiz();
+  }
+
+  function setSubtes(s) {
+    if (subtes === s) return;
+    subtes = s;
     index = 0;
     picked = null;
     paintChips();
@@ -111,7 +142,14 @@ export function renderSeleksi(ctx) {
   const area = wrap.querySelector('#quiz-area');
 
   function soalAktif() {
-    return BANK_SOAL[paket].soal;
+    const all = BANK_SOAL[paket].soal;
+    if (paket !== 'skd' || subtes === 'Semua') return all;
+    return all.filter(q => q.topik === subtes);
+  }
+
+  function jumlahDijawab(list) {
+    const done = answered[paket] || [];
+    return list.filter(q => done.includes(q.id)).length;
   }
 
   function sudahDijawab(qid) {
@@ -125,26 +163,32 @@ export function renderSeleksi(ctx) {
   }
 
   function paintBadge() {
-    const total = soalAktif().length;
-    const done = (answered[paket] || []).length;
-    wrap.querySelector('#progres-badge').textContent = `${done}/${total} soal dijawab`;
+    const list = soalAktif();
+    const total = list.length;
+    const done = jumlahDijawab(list);
+    const label = paket === 'skd' && subtes !== 'Semua' ? ` ${subtes}` : '';
+    wrap.querySelector('#progres-badge').textContent = `${done}/${total} soal${label} dijawab`;
     wrap.querySelector('#bank-desc').textContent = BANK_SOAL[paket].deskripsi;
   }
 
   function paintQuiz() {
     paintBadge();
     const list = soalAktif();
-    const q = list[index];
     const total = list.length;
-    const allDone = (answered[paket] || []).length >= total;
+    const done = jumlahDijawab(list);
 
-    if (allDone && index >= total) {
+    if (!total) {
+      area.innerHTML = `<div class="empty"><h4>Belum ada soal untuk filter ini</h4><p class="small">Pilih subtes lain atau tekan Semua subtes.</p></div>`;
+      return;
+    }
+
+    if (index >= total) {
       paintResult();
       return;
     }
 
-    const benar = (answered[paket] || []).length;
-    const pct = Math.round((benar / total) * 100);
+    const q = list[index];
+    const pct = Math.round((done / total) * 100);
 
     area.innerHTML = `
       <div class="quiz-progress">
@@ -205,12 +249,13 @@ export function renderSeleksi(ctx) {
   function paintResult() {
     const list = soalAktif();
     const total = list.length;
-    const dijawab = (answered[paket] || []).length;
+    const dijawab = jumlahDijawab(list);
     const pct = Math.round((dijawab / total) * 100);
+    const labelSub = paket === 'skd' && subtes !== 'Semua' ? ` subtes ${subtes}` : '';
     area.innerHTML = `
       <div class="result-hero" style="margin-bottom:18px">
-        <h2>${pct === 100 ? 'Semua soal sudah kamu jawab' : 'Progres latihan'}</h2>
-        <p style="color:rgba(255,255,255,.85);font-size:.88rem">${esc(BANK_SOAL[paket].nama)}: ${dijawab} dari ${total} soal</p>
+        <h2>${dijawab === total ? 'Semua soal sudah kamu jawab' : 'Progres latihan'}</h2>
+        <p style="color:rgba(255,255,255,.85);font-size:.88rem">${esc(BANK_SOAL[paket].nama)}${labelSub}: ${dijawab} dari ${total} soal</p>
         <div class="progress" style="margin-top:14px;background:rgba(255,255,255,.24)">
           <span style="width:${pct}%;background:#fff"></span>
         </div>
@@ -230,12 +275,18 @@ export function renderSeleksi(ctx) {
   }
 
   function resetPaket() {
-    answered[paket] = [];
+    const aktif = soalAktif();
+    if (subtes === 'Semua' || paket !== 'skd') {
+      answered[paket] = [];
+    } else {
+      const ids = new Set(aktif.map(q => q.id));
+      answered[paket] = (answered[paket] || []).filter(id => !ids.has(id));
+    }
     store.set('bankSoal', answered);
     index = 0;
     picked = null;
     paintQuiz();
-    ctx.toast('Paket latihan direset');
+    ctx.toast(subtes === 'Semua' || paket !== 'skd' ? 'Paket latihan direset' : `Latihan ${subtes} direset`);
   }
 
   wrap.querySelector('#reset-bank').addEventListener('click', () => {
