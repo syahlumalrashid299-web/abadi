@@ -83,6 +83,17 @@ export function renderBeranda(ctx) {
       <div class="sec-head"><div><h2>Akses Cepat</h2><p>Alat yang paling sering dipakai siswa kelas 12.</p></div></div>
       <div class="grid grid-3" id="quick-grid"></div>
     </section>
+
+    <section style="margin-top:26px" id="install-section">
+      <div class="card pad-lg" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+        <div class="path-icon" style="width:46px;height:46px;flex:0 0 46px;background:var(--primary-tint);color:var(--primary)">${icon('download')}</div>
+        <div style="flex:1;min-width:220px">
+          <div style="font-weight:800">Pasang ABADI di HP</div>
+          <div class="tiny muted" style="margin-top:2px">Versi Android 1.0.0, 4,2 MB. Bisa dipakai tanpa internet setelah dipasang.</div>
+        </div>
+        <a class="btn btn-primary" href="https://github.com/syahlumalrashid299-web/abadi/releases/download/v1.0.0/ABADI-v1.0.0.apk" rel="noopener">${icon('download')} Unduh APK</a>
+      </div>
+    </section>
   `;
 
   // Kartu jalur
