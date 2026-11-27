@@ -1,5 +1,5 @@
 // Service worker ABADI: cache app shell agar bisa dipakai offline.
-const CACHE = 'abadi-v2';
+const CACHE = 'abadi-v3';
 
 const SHELL = [
   './',
@@ -20,6 +20,7 @@ const SHELL = [
   './js/views/rekomendasi.js',
   './js/views/bandingkan.js',
   './js/views/kuliah.js',
+  './js/views/kedinasan.js',
   './js/views/jurusan.js',
   './js/views/seleksi.js',
   './js/views/lowongan.js',
