@@ -1,5 +1,5 @@
 import { icon, store, readiness, esc } from '../app.js';
-import { PATHS } from '../data/paths.js';
+import { PATHS, KEDINASAN } from '../data/paths.js';
 import { COLLEGES } from '../data/colleges.js';
 import { MAJORS } from '../data/majors.js';
 import { LOWONGAN } from '../data/jobs.js';
@@ -12,6 +12,8 @@ export function renderBeranda(ctx) {
   const quiz = store.get('quizResult', null);
   const favs = store.get('savedCollege', []);
   const banks = store.get('bankSoal', { snbt: [], skd: [] });
+  const soalDijawab = Object.values(banks || {}).reduce((sum, arr) => sum + (Array.isArray(arr) ? arr.length : 0), 0);
+  const totalSoal = Object.values(BANK_SOAL).reduce((sum, p) => sum + p.soal.length, 0);
   const docs = store.get('berkas', []);
 
   const wrap = document.createElement('div');
@@ -31,7 +33,7 @@ export function renderBeranda(ctx) {
     <div class="grid grid-4" style="margin-top:16px">
       <div class="stat-card"><span class="stat-value mono">${COLLEGES.length}</span><span class="stat-label">Kampus terdata</span></div>
       <div class="stat-card"><span class="stat-value mono">${MAJORS.length}</span><span class="stat-label">Jurusan & prospek</span></div>
-      <div class="stat-card"><span class="stat-value mono">${BANK_SOAL.snbt.soal.length + BANK_SOAL.skd.soal.length}</span><span class="stat-label">Soal latihan</span></div>
+      <div class="stat-card"><span class="stat-value mono">${totalSoal}</span><span class="stat-label">Soal latihan</span></div>
       <div class="stat-card"><span class="stat-value mono">${LOWONGAN.length}</span><span class="stat-label">Jalur lowongan</span></div>
     </div>
 
@@ -66,7 +68,7 @@ export function renderBeranda(ctx) {
           </div>
           <div class="row-between" style="font-size:.85rem">
             <span class="muted">Soal dikerjakan</span>
-            <strong>${(banks.snbt || []).length + (banks.skd || []).length} soal</strong>
+            <strong>${soalDijawab} soal</strong>
           </div>
           <div class="row-between" style="font-size:.85rem">
             <span class="muted">Berkas tersimpan</span>
@@ -120,7 +122,8 @@ export function renderBeranda(ctx) {
 
   // Akses cepat
   const quick = [
-    { view: 'seleksi', icon: 'target', t: 'Bank Soal UTBK & SKD', d: 'Latihan berpembahasan, langsung nilai.' },
+    { view: 'seleksi', icon: 'target', t: 'Bank Soal UTBK & SKD', d: 'TWK, TIU, TKP, dan pembahasan langsung.' },
+    { view: 'kedinasan', icon: 'shield', t: 'Sekolah Kedinasan', d: `${KEDINASAN.length} sekolah + situs resmi.` },
     { view: 'kuliah', icon: 'building', t: 'Cari Kampus', d: 'Filter PTN, PTS, vokasi, dan biaya.' },
     { view: 'berkas', icon: 'file', t: 'Berkas Pendaftaran', d: 'Simpan ijazah, SKCK, sertifikat di satu tempat.' },
     { view: 'lowongan', icon: 'briefcase', t: 'Lowongan CPNS', d: 'Formasi SLTA dan jadwal seleksi.' },
