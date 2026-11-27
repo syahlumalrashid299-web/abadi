@@ -59,7 +59,7 @@ export function readiness() {
   const checks = [
     { label: 'Ikuti kuis rekomendasi jalur', done: !!quiz, view: 'rekomendasi' },
     { label: 'Simpan minimal 1 kampus favorit', done: saved.length > 0, view: 'kuliah' },
-    { label: 'Selesaikan latihan bank soal', done: (bankSoal.snbt || []).length + (bankSoal.skd || []).length > 0, view: 'seleksi' },
+    { label: 'Selesaikan latihan bank soal', done: Object.values(bankSoal || {}).some(a => Array.isArray(a) && a.length > 0), view: 'seleksi' },
     { label: 'Atur perbandingan jalur', done: !!compare, view: 'bandingkan' },
     { label: 'Unggah minimal 3 berkas', done: docs.length >= 3, view: 'berkas' }
   ];
