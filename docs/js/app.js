@@ -6,6 +6,7 @@ import { renderBeranda } from './views/beranda.js';
 import { renderRekomendasi } from './views/rekomendasi.js';
 import { renderBandingkan } from './views/bandingkan.js';
 import { renderKuliah } from './views/kuliah.js';
+import { renderKedinasan } from './views/kedinasan.js';
 import { renderJurusan } from './views/jurusan.js';
 import { renderSeleksi } from './views/seleksi.js';
 import { renderLowongan } from './views/lowongan.js';
@@ -19,6 +20,7 @@ export const NAV = [
   ]},
   { group: 'Empat Jalur', items: [
     { view: 'kuliah', label: 'Kuliah & Kampus', icon: 'cap' },
+    { view: 'kedinasan', label: 'Sekolah Kedinasan', icon: 'shield' },
     { view: 'jurusan', label: 'Jurusan & Prospek', icon: 'book' },
     { view: 'seleksi', label: 'Seleksi & Bank Soal', icon: 'target' },
     { view: 'lowongan', label: 'Lowongan CPNS', icon: 'briefcase' }
@@ -40,6 +42,7 @@ const ROUTES = {
   rekomendasi: renderRekomendasi,
   bandingkan: renderBandingkan,
   kuliah: renderKuliah,
+  kedinasan: renderKedinasan,
   jurusan: renderJurusan,
   seleksi: renderSeleksi,
   lowongan: renderLowongan,
